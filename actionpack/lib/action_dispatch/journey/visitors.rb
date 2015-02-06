@@ -85,6 +85,7 @@ module ActionDispatch
           def visit_SYMBOL(n);  terminal(n); end
           def visit_SLASH(n);   terminal(n); end
           def visit_DOT(n);     terminal(n); end
+          def visit_PLUS(n);    terminal(n); end
 
           private_instance_methods(false).each do |pim|
             next unless pim =~ /^visit_(.*)$/

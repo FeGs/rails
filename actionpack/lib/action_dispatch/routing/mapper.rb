@@ -97,7 +97,6 @@ module ActionDispatch
 
           options = normalize_options!(options, formatted, path_params, ast, scope[:module])
 
-
           split_constraints(path_params, scope[:constraints]) if scope[:constraints]
           constraints = constraints(options, path_params)
 
@@ -133,9 +132,9 @@ module ActionDispatch
             path = Mapper.normalize_path(path)
 
             if format == true
-              "#{path}.:format"
+              "#{path}.:format(+:variant)"
             elsif optional_format?(path, format)
-              "#{path}(.:format)"
+              "#{path}(.:format(+:variant))"
             else
               path
             end

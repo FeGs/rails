@@ -1,5 +1,13 @@
+*   Allow variants to be set through the URL
+
+    request.variant can be set by setting :format. For example, accessing
+    http://example.com/posts.html+partial or `request.format = 'html+partial'` set
+    both `format: :html` and `request.variant = [:partial]` automatically.
+
+    *Hong ChulJu*
+
 *   Drop request class from RouteSet constructor.
- 
+
     If you would like to use a custom request class, please subclass and implemet
     the `request_class` method.
 

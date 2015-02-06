@@ -449,8 +449,8 @@ module ActionDispatch
       end
 
       {
-        :segment => ['/a%2Fb%20c+d/splat', { :segment => 'a/b c+d', :splat => 'splat'   }],
-        :splat   => ['/segment/a/b%20c+d', { :segment => 'segment', :splat => 'a/b c+d' }]
+        :segment => ['/a%2Fb%20c%2Bd/splat', { :segment => 'a/b c+d', :splat => 'splat'   }],
+        :splat   => ['/segment/a/b%20c%2Bd', { :segment => 'segment', :splat => 'a/b c+d' }]
       }.each do |name, (request_path, expected)|
         define_method("test_recognize_#{name}") do
           path  = Path::Pattern.from_string '/:segment/*splat'

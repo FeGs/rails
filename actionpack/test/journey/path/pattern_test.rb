@@ -204,7 +204,7 @@ module ActionDispatch
 
         def test_to_regexp_defaults
           path = Pattern.from_string '/:controller(/:action(/:id))'
-          expected = %r{\A/([^/.?]+)(?:/([^/.?]+)(?:/([^/.?]+))?)?\Z}
+          expected = %r{\A/([^/.?+]+)(?:/([^/.?+]+)(?:/([^/.?+]+))?)?\Z}
           assert_equal expected, path.to_regexp
         end
 

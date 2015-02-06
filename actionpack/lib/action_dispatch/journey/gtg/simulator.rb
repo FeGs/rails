@@ -29,7 +29,7 @@ module ActionDispatch
         def memos(string)
           input = StringScanner.new(string)
           state = [0]
-          while sym = input.scan(%r([/.?]|[^/.?]+))
+          while sym = input.scan(%r([/.?+]|[^/.?+]+))
             state = tt.move(state, sym)
           end
 

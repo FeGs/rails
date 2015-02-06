@@ -7,7 +7,7 @@ module ActionDispatch
         attr_reader :spec, :requirements, :anchored
 
         def self.from_string string
-          new Journey::Router::Strexp.build(string, {}, ["/.?"], true)
+          new Journey::Router::Strexp.build(string, {}, ["/.?+"], true)
         end
 
         def initialize(strexp)
@@ -113,6 +113,7 @@ module ActionDispatch
             Regexp.escape(node.left)
           end
           alias :visit_DOT :visit_LITERAL
+          alias :visit_PLUS :visit_LITERAL
 
           def visit_SLASH(node)
             node.left

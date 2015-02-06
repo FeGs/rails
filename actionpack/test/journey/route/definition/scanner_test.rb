@@ -19,7 +19,7 @@ module ActionDispatch
             ['/page&',  [[:SLASH, '/'], [:LITERAL, 'page&']]],
             ["/page'",  [[:SLASH, '/'], [:LITERAL, "page'"]]],
             ['/page*',  [[:SLASH, '/'], [:LITERAL, 'page*']]],
-            ['/page+',  [[:SLASH, '/'], [:LITERAL, 'page+']]],
+            ['/page+',  [[:SLASH, '/'], [:LITERAL, 'page'], [:PLUS, '+']]],
             ['/page,',  [[:SLASH, '/'], [:LITERAL, 'page,']]],
             ['/page;',  [[:SLASH, '/'], [:LITERAL, 'page;']]],
             ['/page=',  [[:SLASH, '/'], [:LITERAL, 'page=']]],
@@ -50,6 +50,16 @@ module ActionDispatch
                             [:SYMBOL, ':format'],
                             [:RPAREN, ')'],
                           ]],
+            ['(.:format(+:variant))', [
+                                        [:LPAREN, '('],
+                                        [:DOT, '.'],
+                                        [:SYMBOL, ':format'],
+                                        [:LPAREN, '('],
+                                        [:PLUS, '+'],
+                                        [:SYMBOL, ':variant'],
+                                        [:RPAREN, ')'],
+                                        [:RPAREN, ')'],
+                                      ]],
           ].each do |str, expected|
             @scanner.scan_setup str
             assert_tokens expected, @scanner

@@ -101,6 +101,10 @@ module ActionDispatch
           assert_round_trip "/(:locale)(.:format)"
         end
 
+        def test_plus_symbol
+          assert_round_trip "(+:variant)"
+        end
+
         def assert_round_trip str
           assert_equal str, @parser.parse(str).to_s
         end

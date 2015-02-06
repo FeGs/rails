@@ -244,6 +244,19 @@ class DefaultUrlOptionsTest < ActionController::TestCase
       assert_equal '/en/descriptions/1.xml', @controller.send(:description_path, 1, :format => "xml")
     end
   end
+
+  def test_t
+    with_routing do |set|
+      set.draw do
+        scope("/:locale") do
+          resources :descriptions
+        end
+        get ':controller/:action'
+      end
+
+      assert_equal '/pl/descriptions', @controller.send(:descriptions_path, "pl")
+    end
+  end
 end
 
 class OptionalDefaultUrlOptionsControllerTest < ActionController::TestCase

@@ -48,13 +48,13 @@ module ActionDispatch
           states = table.eclosure 0
 
           assert_equal 1, table.following_states(states, 'a').length
-          assert_equal 1, table.following_states(states, /[^\.\/\?]+/).length
+          assert_equal 1, table.following_states(states, /[^\.\/\?\+]+/).length
           assert_equal 0, table.following_states(states, 'b').length
         end
 
         def test_alphabet
           table  = tt 'a|:a'
-          assert_equal [/[^\.\/\?]+/, 'a'], table.alphabet
+          assert_equal [/[^\.\/\?\+]+/, 'a'], table.alphabet
 
           table  = tt 'a|a'
           assert_equal ['a'], table.alphabet

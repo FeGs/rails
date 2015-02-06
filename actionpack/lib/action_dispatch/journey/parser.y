@@ -1,6 +1,6 @@
 class ActionDispatch::Journey::Parser
   options no_result_var
-token SLASH LITERAL SYMBOL LPAREN RPAREN DOT STAR OR
+token SLASH LITERAL SYMBOL LPAREN RPAREN DOT STAR OR PLUS
 
 rule
   expressions
@@ -28,6 +28,7 @@ rule
     | literal
     | slash
     | dot
+    | plus
     ;
   slash
     : SLASH              { Slash.new('/') }
@@ -40,6 +41,9 @@ rule
     ;
   dot
     : DOT                { Dot.new(val.first) }
+    ;
+  plus
+    : PLUS               { Plus.new(val.first) }
     ;
 
 end
