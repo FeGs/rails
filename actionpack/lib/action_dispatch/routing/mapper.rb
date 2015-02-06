@@ -97,7 +97,6 @@ module ActionDispatch
 
           options = normalize_options!(options, formatted, path_params, ast, scope[:module])
 
-
           split_constraints(path_params, scope[:constraints]) if scope[:constraints]
           constraints = constraints(options, path_params)
 

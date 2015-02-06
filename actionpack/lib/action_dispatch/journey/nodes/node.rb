@@ -58,7 +58,7 @@ module ActionDispatch
         def literal?; false; end
       end
 
-      %w{ Symbol Slash Dot }.each do |t|
+      %w{ Symbol Slash Dot Plus }.each do |t|
         class_eval <<-eoruby, __FILE__, __LINE__ + 1
           class #{t} < Terminal;
             def type; :#{t.upcase}; end
@@ -70,7 +70,7 @@ module ActionDispatch
         attr_accessor :regexp
         alias :symbol :regexp
 
-        DEFAULT_EXP = /[^\.\/\?]+/
+        DEFAULT_EXP = /[^\.\/\?\+]+/
         def initialize(left)
           super
           @regexp = DEFAULT_EXP
